@@ -1,0 +1,9 @@
+第13章 字符串
+
+    13.1 不可变String
+        1. String对象是不可变的，String对象具有只读性，指向它的任何引用都不会改变它的值，
+            也不会对其他引用有任何影响。
+    13.2 重载 “+” 与StringBuilder
+        2. StringBuilder效率高于 “+” ，简单的代码编译器会将String转换成StringBuilder，
+            但遇到相对复杂比如设计循环时，编译器会掉入陷阱，会在循环中创建StringBuilder
+            对象，若循环中存在append(a + ":" + b)时，编译器也不停的在创建StringBuilder对象。

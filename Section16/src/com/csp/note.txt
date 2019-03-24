@@ -1,0 +1,14 @@
+第16章 数组
+
+    16.1 数组为什么特殊
+        1. 在Java中，数组是一种效率最高的存储和随机访问对象引用序列的方式。
+    16.6 创建测试数据
+        1. Arrays.fill(array,start,end,something)可以填充整个数组,start和end均是index（从0开始）。
+        2.
+
+    16.7 Arrays实用功能
+        1. System.arraycopy(),速度快过for循环,基本类型和对象类型都可以复制，对象类型只是复制了引用，被称作浅复制。
+            该方法不会执行自动包装和自动拆包。
+        2. Arrays.equals(),相等条件，元素个数相等且对应位置元素也相等,元素比较调用其equals方法。
+        3. Arrays.sort()排序。
+        4. Arrays.binarySearch() 对有序数组执行快速查找。

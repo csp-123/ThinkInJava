@@ -1,0 +1,25 @@
+第18章 Java I/O系统
+
+    18.6 I/O 流典型的使用方式
+        1. InputStream OutputStream Reader Writer 基本知识讲解
+            InputStream OutputStream Reader Writer是一些底层类，同时是抽象类，由它的子类来完成流的任务，那为什么会有两种呢？
+            因为输入输出流中的源不同，即读写的的对象单元编码不同，可以将每种编码规则理解为一种协议，如果双方编码不同，那读出来就有可能是乱码。
+            Java的流操作分为字节流和字符流，每种流所接收的类型不同，读写操作时要读对应的对象。InputStream OutputStream是针对字节流的，
+            字节流中输入输出的数据是以单个字节为读写单位的，字符流是由Java虚拟机将单个字节转化为两个字节的unicode字符。Reader Writer是字符流。
+            一般在什么情况下使用字节流或者字符流呢？ 一段二进制数据，如音频，视频，图像等，使用字节流操作比较方便，但如果操作对象是一段文本，
+            操作时使用字节流操作，读取时应以字节流读入，如果要显示为字符，需要自己与字符的转换。但是运用面向对象的思想，我们诞生了一个直接操作
+            文本数据的字符流。可以从JDK中看到，字符流是在JDK1.1时才有的。
+        2. FileInputstream FileOutputstream FileReader FileWriter基本知识
+            FileInputstream FileOutputstream Reader Writer分别是InputStream OutputStream Reader Writer 的实现子类，这个应该比较容易理解。对应的一些方法我就不介绍了。
+        3. InputStreamReader OutputStreamReader基本知识
+            (1) 字节输入流变成字符输入流：InputStreamReader
+            (2) 字节输出流变成字符输出流：OutputStreamReader
+            为了达到较高效率，避免频繁的进行相互转换，而应尽量用BufferWriter和BufferReader 来包装它们。还有一些其他的类，在这里就不一 一介绍了。
+
+    18.10 新I/O
+        1. clear() 使缓冲区为一系列新的通道读取或相对放置 操作做好准备：它将限制设置为容量大小，将位置设置为 0。
+           通道读取指从通道将数据读入到buffer中，相对放置是从位置开始将数据插入到buffer中
+           flip() 使缓冲区为一系列新的通道写入或相对获取 操作做好准备：它将限制设置为当前位置，然后将位置设置为 0。
+           把限制设置为当前位置是为了保证数据的可靠性。让从buffer写入到通道的数据是buffer中确实是已经存在的数据。
+           rewind() 使缓冲区为重新读取已包含的数据做好准备：它使限制保持不变，将位置设置为 0。
+           和clear()类似，只是不改动限制

@@ -1,0 +1,19 @@
+第12章 通过异常处理错误
+
+    12.5 异常说明
+        1. java.lang.Throwable是所有异常的超类。
+                            Throwable
+                                |
+                |                                 |
+              Error                           Exception
+                                                  |
+                                       |                      |
+                                RuntimeException          非运行时异常
+
+    12.6 捕获所有异常
+        1. printStackTrace() 方法显示的是原来异常抛出点的信息。
+           fillInStackTrace() 将返回一个Throwable对象，它是把当前调用栈信息填入原来的异常对象而建立的。
+
+    12.10 构造器
+        1. 在创建需要清理的对象之后，立即进入一个try-finally语句块；一定要注意，在构造时就抛出异常是不需要清理的。
+            一般这种情况都有两层try块包围，外层不需要finally清理。
